@@ -11,7 +11,7 @@
     <div class="container mx-auto p-5">
       <div class="d-flex justify-content-between align-items-center pb-5">
         <h1>Administration</h1>
-        <a href="" class="btn btn-success">Nouveau</a>
+        <a href="admin/new/project" class="btn btn-success">Nouveau</a>
       </div>
 
       <table class="table table-hover">
@@ -30,7 +30,7 @@
               <td class="py-4"><?php echo $project->getTitle(); ?></td>
               <td class="py-4"><?php echo $project->getCreatedAt()->format('d.m.Y'); ?></td>
               <td class="py-3">
-                <a href="" class="btn btn-outline-secondary">
+                <a href="/portfolio/admin/edit/project?id=<?php echo $project->getId(); ?>" class="btn btn-outline-secondary">
                   Editer
                 </a>
                 <a href="" class="btn btn-outline-danger">
@@ -43,4 +43,16 @@
       </table>
     </div>
   </body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  
+</body>
 </html>

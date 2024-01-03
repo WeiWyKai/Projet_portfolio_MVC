@@ -38,6 +38,12 @@ $router->add('/portfolio/logout', 'AuthController', 'logout');
 //Accueil de l'administration
 $router->add('/portfolio/admin','AdminController','index');
 
+// Administration - Ajout d'un projet
+$router->add('/portfolio/admin/new/project', 'AdminController', 'add');
+
+// Administration - Edition d'un projet
+$router->add('/portfolio/admin/edit/project', 'AdminController', 'edit');
+
 //erreur 404
 $router->add('portfolio/404', 'ErrorController', 'error404');
 
