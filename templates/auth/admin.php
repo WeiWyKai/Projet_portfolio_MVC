@@ -14,6 +14,13 @@
         <a href="admin/new/project" class="btn btn-success">Nouveau</a>
       </div>
 
+       <!-- Message de succès -->
+       <?php if(isset($_GET['success'])): ?>
+        <div class="alert alert-success">
+          <?php echo $_GET['success']; ?>
+        </div>
+      <?php endif; ?>
+
       <table class="table table-hover">
         <thead>
           <tr>
@@ -33,7 +40,7 @@
                 <a href="/portfolio/admin/edit/project?id=<?php echo $project->getId(); ?>" class="btn btn-outline-secondary">
                   Editer
                 </a>
-                <a href="" class="btn btn-outline-danger">
+                <a href="/portfolio/admin/delete/project?id=<?php echo $project->getId(); ?>" class="btn btn-outline-danger" onclick="return confirm('Êtes-vous sûr de vouloir supprimer le projet?')">
                   Supprimer
                 </a>
               </td>
@@ -43,16 +50,4 @@
       </table>
     </div>
   </body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="">
-</head>
-<body>
-  
-</body>
 </html>

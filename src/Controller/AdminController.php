@@ -157,7 +157,35 @@ class AdminController extends AbstractController{
     $this->view('auth/projet/edit.php',[
       'projet' => $projet,
       'error' => $error ?? null, //equivaut à: $error !==null ? $error : null
-      'success' => $success ?? null //Coalescence des null
+      'success' => $success ?? null //Coalescence des null (Nullish coalescing operator)
     ]);
+  }
+  /**
+   * Suppresion
+   */
+  public function delete() : void {
+       //si l'id n'existe pas ou est vide, redirection vers l'administration
+       if(empty($_GET['id'])){
+        header('Location: /portfolio/admin');
+        exit;
+      }
+  
+      $projetRepository = new ProjetRepository();
+      $projet = $projetRepository->find($_GET['id']);
+  
+      //Si aucun projet avec cet ID
+      if(!$projet){
+        header('Location: /portfolio/admin');
+        exit;
+      }
+
+      //Suppression de l'id en BDD
+      $projetRepository = new ProjetRepository();
+      $projetRepository->delete($projet);
+
+      //Supprime l'image du projet
+      unlink($projet->getFolderPreview());
+
+      header('Location: /portfolio/admin?success=Votre projet a bien été supprimé');
   }
 }

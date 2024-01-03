@@ -18,6 +18,17 @@ class ProjetRepository extends Database
     }
 
     /**
+     * Suppression de BDD
+     */
+    public function delete(Projet $projet){
+        $query = $this->instance->prepare("DELETE FROM projets WHERE id = :id");
+        $query->bindValue(':id', $projet->getId());   
+        $query->execute();
+
+        return $projet;
+    }
+
+    /**
      * Edition de BDD
      */
     public function edit(Projet $projet): Projet
@@ -37,9 +48,6 @@ class ProjetRepository extends Database
         //Retourne notre objet muni d'un ID
         return $projet;
     }
-
-
-
 
     /**
      * Insertion en base de données
